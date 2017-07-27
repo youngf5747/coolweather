@@ -5,6 +5,6 @@
     <list>
         <mapping class="yang.fan.coolweather.db.Province"/>
         <mapping class="yang.fan.coolweather.db.City"/>
-        <mapping class="yang.fan.coolweather.db.Country"/>
+        <mapping class="yang.fan.coolweather.db.County"/>
     </list>
 </litepal>
