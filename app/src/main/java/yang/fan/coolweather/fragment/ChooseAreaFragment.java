@@ -168,7 +168,7 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_CITY;
         } else {
             int provinceCode = selectedProvince.getProvinceCode();
-            String address = getResources().getString(R.string.BASE_URL) + provinceCode;
+            String address = getResources().getString(R.string.BASE_URL) + "china/" + provinceCode;
             queryFromServer(address, "city");
         }
     }
@@ -191,7 +191,7 @@ public class ChooseAreaFragment extends Fragment {
         } else {
             int provinceCode = selectedProvince.getProvinceCode();
             int cityCode = selectedCity.getCityCode();
-            String address = getResources().getString(R.string.BASE_URL) + provinceCode
+            String address = getResources().getString(R.string.BASE_URL) + "china/" + provinceCode
                     + "/" + cityCode;
             queryFromServer(address, "county");
         }
