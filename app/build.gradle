@@ -8,16 +8,16 @@ android {
         applicationId "yang.fan.coolweather"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         config {
-            storeFile file('F:/androidkey/coolweather.jks')
-            storePassword 'fun1215'
-            keyAlias 'coolweatherkey'
-            keyPassword 'baobao3'
+            storeFile file(KEY_PATH)
+            storePassword KEY_PWD
+            keyAlias ALIAS_NAME
+            keyPassword ALIAS_PWD
         }
     }
     buildTypes {
