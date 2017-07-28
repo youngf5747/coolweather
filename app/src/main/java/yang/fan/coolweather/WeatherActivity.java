@@ -1,5 +1,6 @@
 package yang.fan.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -29,12 +30,11 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import yang.fan.coolweather.gson.Forecast;
 import yang.fan.coolweather.gson.Weather;
+import yang.fan.coolweather.serevice.AutoUpdateService;
 import yang.fan.coolweather.util.HttpUtil;
 import yang.fan.coolweather.util.JSONUtil;
 
 public class WeatherActivity extends AppCompatActivity {
-
-    private static final String BASE_URL = "http://guolin.tech/api/";
 
     @BindView(R.id.iv_weather_bg)
     ImageView mIvWeatherBg;
@@ -119,7 +119,7 @@ public class WeatherActivity extends AppCompatActivity {
      * 从服务器加载背景图片
      */
     private void loadBackgroundPic() {
-        String requestUrl = BASE_URL + "bing_pic";
+        String requestUrl = getResources().getString(R.string.BASE_URL) + "bing_pic";
         HttpUtil.sendOkHttpRequest(requestUrl, new Callback() {
 
             @Override
@@ -150,8 +150,8 @@ public class WeatherActivity extends AppCompatActivity {
      * @param weatherId
      */
     public void requestWeather(final String weatherId) {
-        String weatherUrl = BASE_URL + "weather?cityid=" + weatherId + "&key="
-                + getResources().getString(R.string.KEY);
+        String weatherUrl = getResources().getString(R.string.BASE_URL) + "weather?cityid="
+                + weatherId + "&key=" + getResources().getString(R.string.KEY);
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
@@ -230,5 +230,9 @@ public class WeatherActivity extends AppCompatActivity {
         mTvSuggestionCarWash.setText(carWash);
         mTvSuggestionSport.setText(sport);
         mSvWeatherLayout.setVisibility(View.VISIBLE);
+
+        // 开启定时服务, 每8小时更新一次天气
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }

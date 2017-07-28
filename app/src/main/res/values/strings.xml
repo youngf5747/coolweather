@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Cool Weather</string>
+    <string name="BASE_URL">http://guolin.tech/api/</string>
     <string name="KEY">3cf4005b3de94364b2ea106cecf49470</string>
 </resources>

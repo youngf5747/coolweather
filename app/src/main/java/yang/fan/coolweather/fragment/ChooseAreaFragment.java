@@ -42,7 +42,6 @@ public class ChooseAreaFragment extends Fragment {
     private static final int LEVEL_PROVINCE = 478;
     private static final int LEVEL_CITY = 33;
     private static final int LEVEL_COUNTY = 606;
-    private static final String BASE_URL = "http://guolin.tech/api/china";
 
     private TextView tvTitle;
     private Button btnBack;
@@ -147,7 +146,7 @@ public class ChooseAreaFragment extends Fragment {
             listView.setSelection(0);
             currentLevel = LEVEL_PROVINCE;
         } else {
-            String address = BASE_URL;
+            String address = getResources().getString(R.string.BASE_URL) + "china";
             queryFromServer(address, "province");
         }
     }
@@ -169,7 +168,7 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_CITY;
         } else {
             int provinceCode = selectedProvince.getProvinceCode();
-            String address = BASE_URL + "/" + provinceCode;
+            String address = getResources().getString(R.string.BASE_URL) + provinceCode;
             queryFromServer(address, "city");
         }
     }
@@ -192,7 +191,8 @@ public class ChooseAreaFragment extends Fragment {
         } else {
             int provinceCode = selectedProvince.getProvinceCode();
             int cityCode = selectedCity.getCityCode();
-            String address = BASE_URL + "/" + provinceCode + "/" + cityCode;
+            String address = getResources().getString(R.string.BASE_URL) + provinceCode
+                    + "/" + cityCode;
             queryFromServer(address, "county");
         }
     }
