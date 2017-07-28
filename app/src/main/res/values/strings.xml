@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">Cool Weather</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="KEY">3cf4005b3de94364b2ea106cecf49470</string>
 </resources>
